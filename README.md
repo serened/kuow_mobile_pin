@@ -1,7 +1,9 @@
-KUOW dev project: build mobile PIN site
+<h1>KUOW dev project</h1>
+<em>Build mobile engagement site</em>
+<p>April 2013</p>
 
-April 2013
+<br />
 
-Morgen Nilsson
-Serene Careaga
-Jenna Montgomery
+<p>Morgen Nilsson: Back-end</p>
+<p>Serene Careaga: Front-end</p>
+<p>Jenna Montgomery: Scrum Master</p>
