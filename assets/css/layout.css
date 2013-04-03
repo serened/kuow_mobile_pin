@@ -77,6 +77,11 @@ p.gray{
 	font-weight:600;
 	margin:auto;
 }
+p.gray{
+	color: #ccc;
+	font-weight:;
+	margin:auto;
+}
 a.white{
 	padding:0 8px 0 8px;
 	font-weight:bold;
@@ -87,6 +92,19 @@ a.white{
 .indent{
 	padding:0 10% 0 10%;
 	}
+/* #Form
+================================================== */
+label {
+	float: left;
+	text-align: right;
+	margin: 10px 15px 0 0;
+	width: 10%;
+}
+textarea:focus, input:focus {
+	border: 2px solid #900;
+}
+
+
 /* #Menu
 ================================================== */
 #nav{
