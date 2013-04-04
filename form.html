@@ -30,6 +30,11 @@
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.validate.min.js" type="text/javascript"></script>
 <script src="pledge_form2.js" type="text/javascript"></script>
+<script>
+$(function() {
+   $( "#engage" ).validate();
+});
+</script>
 </head>
 
 <body>
@@ -59,18 +64,18 @@
 
 <div class="sixteen columns">
 
-<form action="" method="post">
+<form action="" method="post" id="engage">
   
   <!-- Label and text input -->
 <p><label for="firstName">First Name:</label></p>
-<p><input type="text" id="firstName" /></p>
+<p><input type="text" id="firstName" class="required" /></p>
 
 
 <p><label for="lastName">Last Name:</label></p>
-<p><input type="text" id="lastName" /></p>
+<p><input type="text" id="lastName" class="required" /></p>
 
 <p><label for="emailAddress">Email Address:</label></p>
-<p><input type="email" id="emailAddress" /></p>
+<p><input type="email" id="emailAddress" class="required" /></p>
 
 <p><label for="phoneNumber">Phone Number:</label></p>
 <p><input type="tel" id="phoneNumber" /></p>
