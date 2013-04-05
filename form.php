@@ -192,8 +192,7 @@ if (isset($_POST['posted']))
 <p><textarea name="feedbackText" id="feedbackText"><?=$val_feedback;?></textarea></p>
 
 <br />  
-<p><button type="submit" name="posted">Submit</button></p>
- 
+
 </form>
 
 </div><!--sixteen columns-->

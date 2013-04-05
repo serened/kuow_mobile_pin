@@ -58,6 +58,23 @@
 
 <div class="sixteen columns">
 
+	<hr style="color:#888"/>
+	<div class="fifteen columns alpha">
+		<p><a href="/form.php"><h3>What's On Your Mind?<h3></a></p>
+	</div>
+	<div class="one column alpha">
+		<h2>></h2>
+		<!-- <img src="assets/img/icon_chevron-right.png"> -->
+	</div>
+
+	<hr style="color:#888"/>
+	
+	<br />
+
+	<hr style="color:#888"/>
+	
+	<p><a href="tel:+12066161023"><h3>Talk To Us</h3></a></p>
+	<hr style="color:#888"/>
 
 </div><!--sixteen columns-->
 
