@@ -122,7 +122,6 @@ if (isset($_POST['posted']))
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="assets/css/pledge.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/skeleton.css">
 <link rel="stylesheet" href="assets/css/layout.css">
@@ -152,10 +151,10 @@ if (isset($_POST['posted']))
 		</div>
 		<div class="logo">
 			<div class="container">
-				<div class="eight columns alpha">
+				<div class="six columns alpha">
 					<a href="http://www.kuow.org"><img id="logo" class="scale-with-grid" src="/images/kuowlogo.png" width="293" height="48" alt="KUOW Logo"></a>
 				</div>
-				<div class="eight columns omega">
+				<div class="ten columns omega">
 				</div>
 			</div>
 		</div>
