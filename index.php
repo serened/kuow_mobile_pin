@@ -58,12 +58,10 @@
 <div class="sixteen columns">
 	<div class="container">
 	<hr style="color:#888"/>
-		<div class="eight columns alpha">	
-			<p><a href="http://128.208.34.41/mobile_pin_test/form.php"><h4>What's On Your Mind?</h4></a></p>
-		</div>
-		<div class="eight columns omega">
-			<a href="http://128.208.34.41/mobile_pin_test/form.php"><img class="action" src="assets/img/icon_chevron-right.png"></a>
-		</div>
+		
+			<a href="http://128.208.34.41/mobile_pin_test/form.php"><h4>What's On Your Mind?</h4></a>
+			<a href="http://128.208.34.41/mobile_pin_test/form.php"><img id="action" src="assets/img/icon_chevron-right.png"></a>
+		
 	<hr style="color:#888"/>
 	</div>
 	
@@ -71,14 +69,11 @@
 	
 	<div class="container">
 	<hr style="color:#888"/>
-		<div class="eight columns alpha">
-			<p><a href="tel:+12066161023"><h4>Talk To Us</h4></a></p>
+		
+			<a href="tel:+12066161023"><h4>Talk To Us</h4></a>
 			
-		</div>
-		<div class="eight columns omega">
-			<a href="http://128.208.34.41/mobile_pin_test/form.php"><img src="assets/img/icon_chevron-right.png"></a>		
+			<a href="tel:+12066161023"><img class="scale-with-grid" id="action" src="assets/img/icon_chevron-right.png"></a>
 					<!-- 	<img class="scale_with_grid" src="assets/img/icon_chevron-right.png"> -->
-		</div>
 	<hr style="color:#888"/>	
 	</div>
 
