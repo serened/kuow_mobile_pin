@@ -54,36 +54,44 @@
 
 <!-- Form
 ================================================== -->
-<div class="container">
 
 <div class="sixteen columns">
-
+	<div class="container">
 	<hr style="color:#888"/>
-	<div class="fifteen columns alpha">
-		<p><a href="/form.php"><h3>What's On Your Mind?<h3></a></p>
-	</div>
-	<div class="one column alpha">
-		<h2>></h2>
-		<!-- <img src="assets/img/icon_chevron-right.png"> -->
-	</div>
-
+		<div class="eight columns alpha">	
+			<p><a href="http://128.208.34.41/mobile_pin_test/form.php"><h4>What's On Your Mind?</h4></a></p>
+		</div>
+		<div class="eight columns omega">
+			<a href="http://128.208.34.41/mobile_pin_test/form.php"><img class="action" src="assets/img/icon_chevron-right.png"></a>
+		</div>
 	<hr style="color:#888"/>
+	</div>
 	
 	<br />
-
-	<hr style="color:#888"/>
 	
-	<p><a href="tel:+12066161023"><h3>Talk To Us</h3></a></p>
+	<div class="container">
 	<hr style="color:#888"/>
+		<div class="eight columns alpha">
+			<p><a href="tel:+12066161023"><h4>Talk To Us</h4></a></p>
+			
+		</div>
+		<div class="eight columns omega">
+			<a href="http://128.208.34.41/mobile_pin_test/form.php"><img src="assets/img/icon_chevron-right.png"></a>		
+					<!-- 	<img class="scale_with_grid" src="assets/img/icon_chevron-right.png"> -->
+		</div>
+	<hr style="color:#888"/>	
+	</div>
 
-</div><!--sixteen columns-->
-
-</div><!--container->
+</div>
 
 <!-- Footer
 ================================================== -->
 <div class="sixteen columns">
-<div class="black-top">
+	<div class="black-top">
+		<div class="container">
+			<p><a class="white" href="http://kuow.org/topic/public-insight-network">More about Public Insight Network</a></p>
+		</div>
+	</div>
 </div><!--sixteen columns-->
 </body>
 </html>
