@@ -71,7 +71,6 @@
 	<hr style="color:#888"/>
 		
 			<a href="tel:+12066161023"><h4>Talk To Us</h4></a>
-			
 			<a href="tel:+12066161023"><img class="scale-with-grid" id="action" src="assets/img/icon_chevron-right.png"></a>
 					<!-- 	<img class="scale_with_grid" src="assets/img/icon_chevron-right.png"> -->
 	<hr style="color:#888"/>	
@@ -81,12 +80,14 @@
 
 <!-- Footer
 ================================================== -->
-<div class="sixteen columns">
+
 	<div class="black-top">
-		<div class="container">
-			<p><a class="white" href="http://kuow.org/topic/public-insight-network">More about Public Insight Network</a></p>
+		<div class="sixteen columns">	
+
+			<p><a class="white" href="http://kuow.org/topic/public-insight-network">About Public Insight Network</a></p>
+		
 		</div>
 	</div>
-</div><!--sixteen columns-->
+
 </body>
 </html>

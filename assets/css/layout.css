@@ -36,6 +36,7 @@ img#logo{
 	padding:45px 0 0 ;
 	}
 img#action{
+	margin-top:-25px;
 	float:right;
 	}		
 div.gray{
@@ -60,16 +61,16 @@ div.black-top{
 	}
 div.black-bottom{
 	background-color:#000;
-	height:25px;
+	height:100%;
 	color:#fff;
 	}
 	
 /* #Page Styles
 ================================================== */
 p.white{
+	padding:20px 20px 0 20px;
 	color: #fff;
-	font-weight:600;
-	margin:auto;
+	font-weight:400;
 }
 p.gray{
 	color: #ccc;
@@ -82,11 +83,9 @@ p.gray{
 	margin:auto;
 }
 a.white{
-	padding:0 8px 0 8px;
-	font-weight:bold;
+	padding:20px 20px 0 20px;
+	font-weight:400;
 	color:#fff;
-	margin-top:2px;
-	text-align:center;
 	}
 .indent{
 	padding:0 10% 0 10%;
