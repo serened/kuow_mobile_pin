@@ -26,8 +26,7 @@
 
 <!-- Scripts
 ================================================== -->
-<script src="jquery.js" type="text/javascript"></script>
-<script src="jquery.validate.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -59,8 +58,8 @@
 	<div class="container">
 	<hr style="color:#888"/>
 		
-			<a href="http://128.208.34.41/mobile_pin_test/form.php"><h4>What's On Your Mind?</h4></a>
-			<a href="http://128.208.34.41/mobile_pin_test/form.php"><img id="action" src="assets/img/icon_chevron-right.png"></a>
+			<a href="./form.php"><h4>What's On Your Mind?</h4></a>
+			<a href="./form.php"><img id="action" src="assets/img/icon_chevron-right.png"></a>
 		
 	<hr style="color:#888"/>
 	</div>

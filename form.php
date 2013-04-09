@@ -1,7 +1,7 @@
 <?php
 
 //HOLDS ANY SUCCESS/FAILURE MESSAGES TO DISPLAY
-$status_message = "";
+$status_message = '';
 
 //IF THE FORM HAS BEEN SUBMIT, VALIDATE AND PROCESS INPUT
 if (isset($_POST['posted']))
@@ -78,12 +78,12 @@ if (isset($_POST['posted']))
 			//send to thank you page
 			//unset form user input
 			unset($_POST);
-			$status_message = "<div class='error'>Form successfully submitted.</div>";
+			$status_message = '<div class="error"><p>Thank you for your successful submission. <a href="./">Back to main page.</a></p></div>';
 		}
 		else
 		{
 			//insert failure - give them other contact options?
-			$status_message = "<div class='error'>Failed to insert to database.</div>";
+			$status_message = '<div class="error"><p>Failed to insert to database.</p></div>';
 		}
 	}
 	else
@@ -91,7 +91,7 @@ if (isset($_POST['posted']))
 		//HANDLE FAILED FIELD VALIDATION AND DISPLAY MESSAGES TO USER
 		//MAYBE: pass JSON output to jQuery and have jQuery display errors (maybe based on something like this) http://stackoverflow.com/questions/3358485/return-the-fields-that-do-not-pass-validation-in-php-to-jquery
 		
-		$status_message = "<div class='error'>Field validation failed.</div>";
+		$status_message = '<div class="error"><p>Field validation failed: '.implode(", ", array_keys($bad_fields)).'.</p></div>';
 	}
 
 	//ENCODE SPECIAL CHARS FOR SAFE DISPLAY IN FORM FIELDS
@@ -137,7 +137,37 @@ if (isset($_POST['posted']))
 <script src="assets/js/jquery.validate.min.js" type="text/javascript"></script>
 <script>
   $(document).ready(function(){
-    $("#engage").validate();
+    jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+      phone_number = phone_number.replace(/\s+/g, ""); 
+      return this.optional(element) || phone_number.length > 9 &&
+             phone_number.match(/^(1[.-]?)?(\([2-9]\d{2}\)|[2-9]\d{2})[.-]?[2-9]\d{2}[.-]?\d{4}$/);
+    }, "Please specify a valid US phone number");
+
+    $("#engage").validate({
+      rules: {
+	    firstName: {
+		  required: true,
+		  maxlength: 75
+		},
+	    lastName: {
+		  required: true,
+		  maxlength: 75
+		},
+	    emailAddress: {
+		  required: true,
+		  email: true,
+		  maxlength: 150
+		},
+        phoneNumber: {
+          required: false,
+          phoneUS: true,
+		  maxlength: 16
+        },
+        feedbackText: {
+		  maxlength: 1000
+        }
+      }
+    });
   });
 </script>
 </head>
@@ -169,11 +199,11 @@ if (isset($_POST['posted']))
 
 <div class="sixteen columns">
 
-<?php echo $status_message; ?>
+<?php if(isset($status_message)) { echo $status_message; } ?>
 
 <form class="" id="engage" action="" method="post" >
-  
-  <!-- Label and text input -->
+
+<!-- Label and text input -->
 <p><label for="firstName">First Name:</label></p>
 <p><input type="text" name="firstName" id="firstName" class="required" <?=$val_fname;?> /></p>
 
@@ -186,12 +216,12 @@ if (isset($_POST['posted']))
 <p><label for="phoneNumber">Phone Number:</label></p>
 <p><input type="tel" name="phoneNumber" id="phoneNumber" <?=$val_phone;?>  /></p>
 
- 
 <!-- Label and textarea -->
 <p><label for="feedbackText">Talk To Us:</label></p>
 <p><textarea name="feedbackText" id="feedbackText"><?=$val_feedback;?></textarea></p>
 
-<br />  
+<br />
+<p><button type="submit" name="posted">Submit</button></p>
 
 </form>
 
