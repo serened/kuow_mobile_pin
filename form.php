@@ -45,17 +45,17 @@ if (isset($_POST['posted']))
 	}
 
 	//START WITH ALL FIELDS INVALID, MUST PASS TESTS TO BE VALID
-	$valid_field = array("firstName"=>false, "lastName"=>false, "emailAddress"=>false, "phoneNumber"=>false, "feedbackText"=>false);
+	$valid_fields = array("firstName"=>false, "lastName"=>false, "emailAddress"=>false, "phoneNumber"=>false, "feedbackText"=>false);
 
 	//VALIDATE FIELD INPUT
-	$valid_field["firstName"]	 = valid_input($_POST['firstName'], 75, "name", true);
-	$valid_field["lastName"]	 = valid_input($_POST['lastName'], 75, "name", true);
-	$valid_field["emailAddress"] = valid_input($_POST['emailAddress'], 150, "email", true);
-	$valid_field["phoneNumber"]	 = valid_input($_POST['phoneNumber'], 16, "phone");
-	$valid_field["feedbackText"] = valid_input($_POST['feedbackText'], 1000, "any", false);
+	$valid_fields["firstName"]	 = valid_input($_POST['firstName'], 75, "name_num", true);
+	$valid_fields["lastName"]	 = valid_input($_POST['lastName'], 75, "name_num", true);
+	$valid_fields["emailAddress"] = valid_input($_POST['emailAddress'], 150, "email", true);
+	$valid_fields["phoneNumber"]	 = valid_input($_POST['phoneNumber'], 16, "phone");
+	$valid_fields["feedbackText"] = valid_input($_POST['feedbackText'], 1000, "any", false);
 
 	//FILTER OUT VALID FIELDS TO ONLY LEAVE FIELDS WITH PROBLEMS
-	$bad_fields = array_filter($valid_field, create_function('$a','return !$a;')); //array should only contain fields with bad input
+	$bad_fields = array_filter($valid_fields, create_function('$a','return !$a;')); //array should only contain fields with bad input
 	
 	if(empty($bad_fields)) //if all fields were valid
 	{
@@ -73,12 +73,36 @@ if (isset($_POST['posted']))
 		//CHECK FOR INSERT SUCCESS
 		if($success)
 		{
-			//TODO
-			//send email confirmation
-			//send to thank you page
-			//unset form user input
-			unset($_POST);
-			$status_message = '<div class="error"><p>Thank you for your successful submission. <a href="./">Back to main page.</a></p></div>';
+			/********************************************************************
+			 * BUILD AND SEND THE EMAIL CONFIRMATION TO THE USER
+			 *******************************************************************/
+			$to = strip_tags($_POST['emailAddress']);
+
+			$subject = 'KUOW Thanks You For Your Submission';
+
+			$headers = "From: noreply@kuow.org\r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+			$message = '<html><body>';
+			$message .= '<img src="http://www2.kuow.org/images/kuowlogo.png" alt="KUOW Logo" />';
+			$message .= '<table rules="all" style="background: #666;" cellpadding="10">';
+			$message .= "<tr style='background: #eee;'><td><strong>First Name:</strong> </td><td>" . strip_tags($_POST['firstName']) . "</td></tr>";
+			$message .= "<tr style='background: #eee;'><td><strong>Last Name:</strong> </td><td>" . strip_tags($_POST['lastName']) . "</td></tr>";
+			$message .= "<tr style='background: #eee;'><td><strong>Email:</strong> </td><td>" . strip_tags($_POST['emailAddress']) . "</td></tr>";
+			$message .= "<tr style='background: #fff;'><td><strong>Phone Number:</strong> </td><td>" . strip_tags($_POST['phoneNumber']) . "</td></tr>";
+			$message .= "<tr style='background: #fff;'><td><strong>Comment:</strong> </td><td>" . htmlentities($_POST['feedbackText']) . "</td></tr>";
+			$message .= "</table>";
+			$message .= "</body></html>";
+
+			mail($to, $subject, $message, $headers);
+
+			/********************************************************************
+			 * SEND USER TO THANK YOU PAGE AND STOP PAGE PROCESSING
+			 *******************************************************************/
+			header('Location: ./form-thanks.php');
+			
+			die();
 		}
 		else
 		{
@@ -91,18 +115,28 @@ if (isset($_POST['posted']))
 		//HANDLE FAILED FIELD VALIDATION AND DISPLAY MESSAGES TO USER
 		//MAYBE: pass JSON output to jQuery and have jQuery display errors (maybe based on something like this) http://stackoverflow.com/questions/3358485/return-the-fields-that-do-not-pass-validation-in-php-to-jquery
 		
-		$status_message = '<div class="error"><p>Field validation failed: '.implode(", ", array_keys($bad_fields)).'.</p></div>';
+		//MAKE FIELD NAMES HUMAN READABLE
+		$human_readable = array("firstName"=>"First Name", 
+								"lastName"=>"Last Name", 
+								"emailAddress"=>"Email Address", 
+								"phoneNumber"=>"Phone Number", 
+								"feedbackText"=>"Talk To Us");
+
+		$human_readable = array_intersect_key($human_readable, $bad_fields);
+		
+		$status_message = '<div class="error"><p>Please fix the following fields: <strong>' . implode(", ", $human_readable) . '</strong>.</p></div>';
 	}
 
 	//ENCODE SPECIAL CHARS FOR SAFE DISPLAY IN FORM FIELDS
 	if(isset($_POST)){foreach ($_POST as &$p) {$p=htmlspecialchars($p);}}
 }
-		//CREATE VARIABLES FOR THE FORM TO DISPLAY DATA VALUES
-		$val_fname    = (isset($_POST['firstName']) && !empty($_POST['firstName'])) 	  ? "value=\"".$_POST['firstName']."\"" 	: "";
-		$val_lname    = (isset($_POST['lastName']) && !empty($_POST['lastName'])) 		  ? "value=\"".$_POST['lastName']."\"" 		: "";
-		$val_email    = (isset($_POST['emailAddress']) && !empty($_POST['emailAddress'])) ? "value=\"".$_POST['emailAddress']."\"" 	: "";
-		$val_phone    = (isset($_POST['phoneNumber']) && !empty($_POST['phoneNumber']))   ? "value=\"".$_POST['phoneNumber']."\"" 	: "";
-		$val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])) ? $_POST['feedbackText'] 	: "";
+
+//CREATE VARIABLES FOR THE FORM TO DISPLAY DATA VALUES
+$val_fname    = (isset($_POST['firstName']) && !empty($_POST['firstName']))       ? "value=\"".$_POST['firstName']."\""    : "";
+$val_lname    = (isset($_POST['lastName']) && !empty($_POST['lastName']))         ? "value=\"".$_POST['lastName']."\""     : "";
+$val_email    = (isset($_POST['emailAddress']) && !empty($_POST['emailAddress'])) ? "value=\"".$_POST['emailAddress']."\"" : "";
+$val_phone    = (isset($_POST['phoneNumber']) && !empty($_POST['phoneNumber']))   ? "value=\"".$_POST['phoneNumber']."\""  : "";
+$val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])) ? $_POST['feedbackText']                 : "";
 
 ?>
 
@@ -141,30 +175,38 @@ if (isset($_POST['posted']))
       phone_number = phone_number.replace(/\s+/g, ""); 
       return this.optional(element) || phone_number.length > 9 &&
              phone_number.match(/^(1[.-]?)?(\([2-9]\d{2}\)|[2-9]\d{2})[.-]?[2-9]\d{2}[.-]?\d{4}$/);
-    }, "Please specify a valid US phone number");
+    }, "Please specify a valid US phone number.");
+
+    jQuery.validator.addMethod("valid_name", function(valid_name, element) {
+      valid_name = valid_name.replace(/\s+/g, " "); 
+      return this.optional(element) || valid_name.length > 0 &&
+             valid_name.match(/^(?:[a-z][0-9]?[-.,'\s]{0,2})+$/i);
+    }, "Please use only letters, numbers and ' - . , characters.");
 
     $("#engage").validate({
       rules: {
-	    firstName: {
-		  required: true,
-		  maxlength: 75
-		},
-	    lastName: {
-		  required: true,
-		  maxlength: 75
-		},
-	    emailAddress: {
-		  required: true,
-		  email: true,
-		  maxlength: 150
-		},
+        firstName: {
+          required: true,
+          valid_name: true,
+          maxlength: 75
+        },
+        lastName: {
+          required: true,
+          valid_name: true,
+          maxlength: 75
+        },
+        emailAddress: {
+          required: true,
+          email: true,
+          maxlength: 150
+        },
         phoneNumber: {
           required: false,
           phoneUS: true,
-		  maxlength: 16
+          maxlength: 16
         },
         feedbackText: {
-		  maxlength: 1000
+          maxlength: 1000
         }
       }
     });
