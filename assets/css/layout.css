@@ -1,6 +1,7 @@
 /*
 * Skeleton V1.2
 * Copyright 2011, Dave Gamache
+* KUOW specifications, 2013, Serene Careaga
 * www.getskeleton.com
 * Free to use under the MIT license.
 * http://www.opensource.org/licenses/mit-license.php
@@ -36,7 +37,7 @@ img#logo{
 	padding:45px 0 0 ;
 	}
 img#action{
-	margin-top:-25px;
+	margin-top:-30px;
 	float:right;
 	}		
 div.gray{
@@ -65,7 +66,7 @@ div.black-bottom{
 	color:#fff;
 	}
 	
-/* #Page Styles
+/* #Text Styles
 ================================================== */
 p.white{
 	padding:20px 20px 0 20px;
@@ -75,11 +76,6 @@ p.white{
 p.gray{
 	color: #ccc;
 	font-weight:600;
-	margin:auto;
-}
-p.gray{
-	color: #ccc;
-	font-weight:;
 	margin:auto;
 }
 a.white{
@@ -106,6 +102,17 @@ label.error {
 	color: red; 
 	padding-left: .5em; 
 	vertical-align: top; 
+}
+input {
+	width:40%;
+}
+textarea {
+	width:40%;
+}
+hr.split {
+  color: #808080 solid 1px;
+  width: 100%;
+  margin: 2% 0 2% 0;
 }
 
 /* #Menu

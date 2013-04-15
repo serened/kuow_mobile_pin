@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/skeleton.css">
 <link rel="stylesheet" href="assets/css/layout.css">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
 
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -53,32 +53,36 @@
 
 <!-- Form
 ================================================== -->
+<div class="container">
+	<div class="sixteen columns">
+	
+		<br />
+		<h2>What's On Your Mind?</h2>
+		<br />
 
-<div class="sixteen columns">
-	<div class="container">
-	<hr style="color:#888"/>
+	<div class="sixteen columns">	
+		<hr class="split"/>
 		
-			<a href="./form.php"><h4>What's On Your Mind?</h4></a>
+			<h4><a href="./form.php">Fill Out A Brief Form</a></h4>
 			<a href="./form.php"><img id="action" src="assets/img/icon_chevron-right.png"></a>
 		
-	<hr style="color:#888"/>
-	</div>
+		<hr class="split"/>
+	</div>	
+
 	
-	<br />
-	
-	<div class="container">
-	<hr style="color:#888"/>
+	<div class="sixteen columns">
+	<hr class="split"/>
 		
-			<a href="tel:+12066161023"><h4>Talk To Us</h4></a>
+			<h4><a href="tel:+12066161023">Leave A Voice Message</a></h4>
 			<a href="tel:+12066161023"><img class="scale-with-grid" id="action" src="assets/img/icon_chevron-right.png"></a>
 					<!-- 	<img class="scale_with_grid" src="assets/img/icon_chevron-right.png"> -->
-	<hr style="color:#888"/>	
+	<hr class="split"/>	
 	</div>
 
 </div>
-
+</div>
 <!-- Footer
-================================================== -->
+================================================== 
 
 	<div class="black-top">
 		<div class="sixteen columns">	
@@ -86,7 +90,7 @@
 			<p><a class="white" href="http://kuow.org/topic/public-insight-network">About Public Insight Network</a></p>
 		
 		</div>
-	</div>
+	</div>-->
 
 </body>
 </html>

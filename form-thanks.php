@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/skeleton.css">
 <link rel="stylesheet" href="assets/css/layout.css">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
 
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -53,43 +53,26 @@
 
 <!-- Form
 ================================================== -->
-
-<div class="sixteen columns">
-	<div class="container">
-		<p>Thank you for submitting your contact information. A confirmation email has been sent to the email address you provided. </p>
-	</div>
-	<div class="container">
-	<hr style="color:#888"/>
-		
-			<a href="./"><h4>Back To Main Page</h4></a>
-			<a href="./"><img id="action" src="assets/img/icon_chevron-right.png"></a>
-		
-	<hr style="color:#888"/>
-	</div>
-	
-	<br />
-	
-	<div class="container">
-	<hr style="color:#888"/>
-		
-			<a href="http://m.kuow.org"><h4>Visit KUOW.org</h4></a>
-			<a href="http://m.kuow.org"><img class="scale-with-grid" id="action" src="assets/img/icon_chevron-right.png"></a>
-					<!-- 	<img class="scale_with_grid" src="assets/img/icon_chevron-right.png"> -->
-	<hr style="color:#888"/>	
-	</div>
-
-</div>
-
-<!-- Footer
-================================================== -->
-
-	<div class="black-top">
+<div class="container">
+	<div class="sixteen columns">
+		<br />
+		<em><h6>Thank you for submitting your contact information. A confirmation email has been sent to the email address you provided.</h6></em>
+		<br />
 		<div class="sixteen columns">	
-
-			<p><a class="white" href="http://kuow.org/topic/public-insight-network">About Public Insight Network</a></p>
-		
+			<hr class="split"/>			
+				<h4><a href="./">Back To Main Page</a></h4>
+				<a href="./"><img id="action" src="assets/img/icon_chevron-right.png"></a>
+			<hr class="split"/>
+		</div>	
+		<div class="sixteen columns">
+		<hr class="split"/>
+			
+				<h4><a href="http://www.kuow.org">Visit KUOW.org</a></h4>
+				<a href="http://www.kuow.org"><img class="scale-with-grid" id="action" src="assets/img/icon_chevron-right.png"></a>
+		<hr class="split"/>	
 		</div>
 	</div>
+</div>
 
 </body>
 </html>

@@ -159,7 +159,7 @@ $val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/skeleton.css">
 <link rel="stylesheet" href="assets/css/layout.css">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Noto+Sans:400,700|Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
 
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -260,7 +260,7 @@ $val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])
 
 <!-- Label and textarea -->
 <p><label for="feedbackText">Talk To Us:</label></p>
-<p><textarea name="feedbackText" id="feedbackText"><?=$val_feedback;?></textarea></p>
+<p><textarea rows="5" name="feebdackText" id="feedbackText"><?=$val_feedback;?></textarea></p>
 
 <br />
 <p><button type="submit" name="posted">Submit</button></p>
@@ -272,7 +272,7 @@ $val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])
 </div><!--container->
 
 <!-- Footer
-================================================== -->
+================================================== 
 <div class="sixteen columns">
 <div class="black-top"></div>
 </div><!--sixteen columns-->
