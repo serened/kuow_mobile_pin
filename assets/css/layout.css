@@ -189,4 +189,10 @@ hr.split {
 	@media only screen and (min-width: 480px) and (max-width: 767px) {}
 
 	/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-	@media only screen and (max-width: 479px) {}
+	@media only screen and (max-width: 479px) {
+		p {clear: left; min-width: 40%; margin-left: auto; margin-right: auto;}
+		label {text-align: left; margin-top:0%; min-width: 40%;}
+		input,textarea,p,label {width: 90%;}
+		label.error {display: block; clear: both; padding-left: 0em;}
+		button {margin-left: 0%}
+	}

@@ -63,7 +63,7 @@ if (isset($_POST['posted']))
 		foreach($_POST as &$p) {$p=trim($p); if($p=="") {$p=NULL;}}
 		
 		//CONNECT TO DATABASE
-		require("../includes/odbc_connect.php");
+		require("E:/Webservice/KUOW/includes/odbc_connect.php");
 		$link = db_connect();
 		
 		//INSERT INTO DATABASE
@@ -78,21 +78,22 @@ if (isset($_POST['posted']))
 			 *******************************************************************/
 			$to = strip_tags($_POST['emailAddress']);
 
-			$subject = 'KUOW Thanks You For Your Submission';
+			$subject = 'KUOW Email Confirmation';
 
 			$headers = "From: noreply@kuow.org\r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 			$message = '<html><body>';
-			$message .= '<img src="http://www2.kuow.org/images/kuowlogo.png" alt="KUOW Logo" />';
-			$message .= '<table rules="all" style="background: #666;" cellpadding="10">';
+			$message .= '<p>Thank you for your submission at <a href="http://share.kuow.org">http://share.kuow.org</a>.</p><p>Below is a copy of the information we received from you. If you have any further thoughts or questions, please contact Carolyn Adolph at 206.221.0746 or <a href="mailto:cadolph@kuow.org">cadolph@kuow.org</a>.</p>';
+			$message .= '<table rules="all" style="background: #666; border: 1px;" cellpadding="10">';
 			$message .= "<tr style='background: #eee;'><td><strong>First Name:</strong> </td><td>" . strip_tags($_POST['firstName']) . "</td></tr>";
 			$message .= "<tr style='background: #eee;'><td><strong>Last Name:</strong> </td><td>" . strip_tags($_POST['lastName']) . "</td></tr>";
 			$message .= "<tr style='background: #eee;'><td><strong>Email:</strong> </td><td>" . strip_tags($_POST['emailAddress']) . "</td></tr>";
 			$message .= "<tr style='background: #fff;'><td><strong>Phone Number:</strong> </td><td>" . strip_tags($_POST['phoneNumber']) . "</td></tr>";
 			$message .= "<tr style='background: #fff;'><td><strong>Comment:</strong> </td><td>" . htmlentities($_POST['feedbackText']) . "</td></tr>";
 			$message .= "</table>";
+			$message .= '<p>Please do not reply directly to this email, use the contact information listed above.</p>';
 			$message .= "</body></html>";
 
 			mail($to, $subject, $message, $headers);
@@ -150,6 +151,7 @@ $val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Talk to KUOW!</title>
+<link href="/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
 <!-- Mobile Specific Metas
 ================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -224,7 +226,7 @@ $val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])
 		<div class="logo">
 			<div class="container">
 				<div class="six columns alpha">
-					<a href="http://www.kuow.org"><img id="logo" class="scale-with-grid" src="/images/kuowlogo.png" width="293" height="48" alt="KUOW Logo"></a>
+					<a href="http://www.kuow.org"><img id="logo" class="scale-with-grid" src="/assets/img/kuowlogo.png" width="293" height="48" alt="KUOW Logo"></a>
 				</div>
 				<div class="ten columns omega">
 				</div>
@@ -260,7 +262,7 @@ $val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])
 
 <!-- Label and textarea -->
 <p><label for="feedbackText">Talk To Us:</label></p>
-<p><textarea rows="5" name="feebdackText" id="feedbackText"><?=$val_feedback;?></textarea></p>
+<p><textarea rows="5" name="feedbackText" id="feedbackText"><?=$val_feedback;?></textarea></p>
 
 <br />
 <p><button type="submit" name="posted">Submit</button></p>

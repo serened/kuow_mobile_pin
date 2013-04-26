@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Talk to KUOW!</title>
+<link href="/assets/img/favicon.ico" rel="icon" type="image/x-icon" />
 <!-- Mobile Specific Metas
 ================================================== -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,7 +41,7 @@
 		<div class="logo">
 			<div class="container">
 				<div class="six columns alpha">
-					<a href="http://www.kuow.org"><img id="logo" class="scale-with-grid" src="/images/kuowlogo.png" width="293" height="48" alt="KUOW Logo"></a>
+					<a href="http://www.kuow.org"><img id="logo" class="scale-with-grid" src="/assets/img/kuowlogo.png" width="293" height="48" alt="KUOW Logo"></a>
 				</div>
 				<div class="ten columns omega">
 				</div>
