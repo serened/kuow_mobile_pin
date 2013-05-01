@@ -53,6 +53,10 @@ if (isset($_POST['posted']))
 	$valid_fields["emailAddress"] = valid_input($_POST['emailAddress'], 150, "email", true);
 	$valid_fields["phoneNumber"]	 = valid_input($_POST['phoneNumber'], 16, "phone");
 	$valid_fields["feedbackText"] = valid_input($_POST['feedbackText'], 1000, "any", false);
+	
+	//FORMAT PERMISSION FOR DB AND EMAIL
+	$_POST['permission'] = (isset($_POST['permission'])) ? 1 : 0 ;
+	$publish_permission  = ($_POST['permission']==1) ? "Yes" : "No" ;
 
 	//FILTER OUT VALID FIELDS TO ONLY LEAVE FIELDS WITH PROBLEMS
 	$bad_fields = array_filter($valid_fields, create_function('$a','return !$a;')); //array should only contain fields with bad input
@@ -67,8 +71,8 @@ if (isset($_POST['posted']))
 		$link = db_connect();
 		
 		//INSERT INTO DATABASE
-		$query = odbc_prepare($link, "INSERT INTO PIN_Contacts (First_Name, Last_Name, Email, Phone, Comment, Date) VALUES (?,?,?,?,?,?)");
-		$success = odbc_execute($query, array($_POST['firstName'], $_POST['lastName'], $_POST['emailAddress'], $_POST['phoneNumber'], $_POST['feedbackText'], date("Y-m-d H:i:s")));
+		$query = odbc_prepare($link, "INSERT INTO PIN_Contacts (First_Name, Last_Name, Email, Phone, Comment, Permission, Date) VALUES (?,?,?,?,?,?,?)");
+		$success = odbc_execute($query, array($_POST['firstName'], $_POST['lastName'], $_POST['emailAddress'], $_POST['phoneNumber'], $_POST['feedbackText'], $_POST['permission'], date("Y-m-d H:i:s")));
 		
 		//CHECK FOR INSERT SUCCESS
 		if($success)
@@ -80,7 +84,7 @@ if (isset($_POST['posted']))
 
 			$subject = 'KUOW Email Confirmation';
 
-			$headers = "From: noreply@kuow.org\r\n";
+			$headers = "From: cadolph@kuow.org\r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
@@ -92,8 +96,8 @@ if (isset($_POST['posted']))
 			$message .= "<tr style='background: #eee;'><td><strong>Email:</strong> </td><td>" . strip_tags($_POST['emailAddress']) . "</td></tr>";
 			$message .= "<tr style='background: #fff;'><td><strong>Phone Number:</strong> </td><td>" . strip_tags($_POST['phoneNumber']) . "</td></tr>";
 			$message .= "<tr style='background: #fff;'><td><strong>Comment:</strong> </td><td>" . htmlentities($_POST['feedbackText']) . "</td></tr>";
+			$message .= "<tr style='background: #fff;'><td><strong>Publish Permission:</strong> </td><td>" . htmlentities($publish_permission) . "</td></tr>";
 			$message .= "</table>";
-			$message .= '<p>Please do not reply directly to this email, use the contact information listed above.</p>';
 			$message .= "</body></html>";
 
 			mail($to, $subject, $message, $headers);
@@ -262,7 +266,8 @@ $val_feedback = (isset($_POST['feedbackText']) && !empty($_POST['feedbackText'])
 
 <!-- Label and textarea -->
 <p><label for="feedbackText">Talk To Us:</label></p>
-<p><textarea rows="5" name="feedbackText" id="feedbackText"><?=$val_feedback;?></textarea></p>
+<p><textarea rows="5" name="feedbackText" id="feedbackText"><?=$val_feedback;?></textarea><br />
+<input type="checkbox" name="permission" id="permission" checked />KUOW may publish my first name and comment.</p>
 
 <br />
 <p><button type="submit" name="posted">Submit</button></p>
